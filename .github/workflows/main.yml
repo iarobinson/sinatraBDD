@@ -17,7 +17,7 @@ jobs:
       run: bundle exec rackup -p 3000 &
 
     - name: Run tests
-      run: bundle exec cucumber
+      run: cd sinatraBDD && bundle exec cucumber
 
     - name: Test report
       uses: actions/upload-artifact@v2
