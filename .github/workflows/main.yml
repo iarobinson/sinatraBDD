@@ -1,10 +1,31 @@
-name: sinatraBDD Cucumber Tests
+name: Cucumber tests
+
 on: [push, pull_request]
+
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v2
       with:
-        bundler-cache: true
-    - run: bundle exec cucumber
+        ruby-version: 2.7
+
+    - name: Install dependencies
+      run: bundle install
+
+    - name: Start server
+      run: bundle exec rackup -p 3000 &
+
+    - name: Run tests
+      run: bundle exec cucumber
+
+    - name: Test report
+      uses: actions/upload-artifact@v2
+      with:
+        name: Test report
+        path: cucumber.json
