@@ -10,12 +10,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Install dependencies
-      run: bundle install
-
-    - name: Start server
-      run: bundle exec rackup -p 3000 &
-
     - name: Run tests
       run: cd sinatraBDD && bundle exec cucumber
 
