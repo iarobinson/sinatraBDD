@@ -13,6 +13,8 @@ This is a boilerplate BDD application which I hope can assist in developing smal
 `rerun app.rb`
 - Visit the application via your browser:
 `http://127.0.0.1:4567`
+- Run the Gherkin tests in a separate terminal tab:
+`cucumber --publish-quiet`
 
 ## Technologies
 - sinatra: A lightweight server libary written in the Ruby programming language.
